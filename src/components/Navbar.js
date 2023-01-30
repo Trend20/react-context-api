@@ -9,11 +9,11 @@ class Navbar extends Component{
     return(
       <nav style={{ background: theme.ui, color: theme.syntax }}>
         <h1>Context App</h1>
-        <u>
+        <ul>
           <li>Home</li>
           <li>About</li>
           <li>Contact</li>
-        </u>
+        </ul>
       </nav>
     )
   }
