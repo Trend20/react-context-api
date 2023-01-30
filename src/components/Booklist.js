@@ -1,5 +1,6 @@
 import  { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
+import { BookContext } from "../context/BooksContext";
 
 // CLASS COMPONENT
 // class Booklist extends Component {
@@ -22,6 +23,7 @@ import { ThemeContext } from "../context/ThemeContext";
 // FUNCTIONAL COMPONENT
 const Booklist = () => {
   const {light, dark, isLightTheme }= useContext(ThemeContext);
+  const { books } = useContext(BookContext);
   const theme = isLightTheme ? light : dark;
   return (
     <div
@@ -29,9 +31,13 @@ const Booklist = () => {
       style={{ background: theme.bg, color: theme.syntax }}
     >
       <ul>
-        <li style={{ background: theme.ui }}>the way to the king</li>
-        <li style={{ background: theme.ui }}>time management</li>
-        <li style={{ background: theme.ui }}>master the art</li>
+        {
+          books.map(book =>{
+            return(
+              <li style={{ background: theme.ui }} key={book.id}>{book.title}</li>
+            )
+          })
+        }
       </ul>
     </div>
   );
